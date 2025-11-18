@@ -1,0 +1,113 @@
+- 词汇表、嵌入、位置编码、隐藏状态
+	- 词汇表：容纳所有可能的符号，决定嵌入向量维度大小
+	- 嵌入层：将符号转嵌入向量
+	- 位置编码：标记符号/嵌入向量的顺序
+	- 隐藏状态：transformer内部对符号的中间向量表示
+- 缩放点积注意力
+	- 向量qkv：权重矩阵和token输入向量相乘，对应生成不同角色向量（主动询问、被动匹配、语义信息）
+	- 注意力分数scoreij：qi和所有kj做点积，词i对词j的注意力分数scoreij
+	- softmax归一化aij：词i对所有词j的注意力概率aij
+	- 加权聚合向量vi'：所有aij和对应的vj相乘并相加得到vi'，最终为输入向量赋予语义信息
+	- 与CNN，RNN的区别
+- 多头注意力
+	- 拆分输入序列，生成多组QKV（d=512 -> 8$\times$d'=64）
+	- 每组QKV使用不同的注意力
+	- 最后将结果拼接
+- 前馈网络（FFN）和稀疏激活
+	- 原因：仅有词间注意力是不够的（线性），需要非线性拓展拟合能力，信息加工厂
+	- 结构：FC1全连接层，ReLU激活层，FC2全连接层 ![[QQ_1743389477088.png | 300]]
+		- FC1：线性升维拓展（d=512 -> d=2048）
+		- ReLU：非线性ReLU激活
+		- FC2：线性降维恢复（d=2048 -> d=512）
+	- 问题：全连接结构（充分信息融合），参数量远大于注意力层（密集）。导致计算量大，训练难度高。
+	- 神经元：FC1的每一行，FC2的每一列（和输入贡献输出结果的每个元素）
+	- 稀疏激活：ReLU会将FC1输出的负值置0，FC1只有部分神经元贡献了结果，同时FC2的部分神经元后续跳过计算，称为激活。这个激活通常是稀疏的。
+- 残差连接与层归一化
+	- 残差连接：T = x + sublayer(x)，提供原始层x，即使sublayer(x)的梯度消失/爆炸也能得到结果
+	- 层归一化：LayerNorm(x)，对一个词的所有维度d，进行(γ,β)的归一，防止局部维度过大，稳定训练
+- 编码-解码架构
+	- 编码：输入序列 -> 上下文语义向量
+		- N=6，每层2个子结构
+		- 多头注意力层
+		- 前馈网络FFN层
+	- 解码： 上下文语义向量 -> 输出序列
+		- N=6，每层3个子结构
+		- 掩码多头自注意力：仅能访问已生成的位置，防止后续部分加入注意
+		- 交叉多头注意力：K，V来自编码器；Q来自解码器。兼顾/对齐输入序列和输出序列，整合全局/长距离上下文
+		- 前馈网络FFN层
+- 模型训练和推理
+	- 模型训练：通过大量数据调整得到权重矩阵（如$W_{Q}$​、$W_{K}$、$W_{V}$​、FFN层参数等），使得预测结果最理想
+	- 模型推理：使用上述训练好的参数，对新的输入生成预测结果（不更新参数）
+- KV Cache
+	- 自回归的逐个token生成
+	- $T_{n}$的计算源自$<T_{0} \dots T_{n-1}>$的N层变换：$Layer_{N}(\dots Layer_{1}(<T_{0} \dots T_{n-1}>))$
+	- $T_{n+1}$的计算源自$<T_{0} \dots T_{n}>$的N层变换：$Layer_{N}(\dots Layer_{1}(<T_{0} \dots T_{n-1},T_{n}>))$
+	- 若$Layer_{N}(\dots Layer_{1}(<T_{0} \dots T_{n-1},T_{n}>))$=$Layer_{N}(\dots Layer_{1}(<T_{0} \dots T_{n-1}>))$+$Layer_{N}(\dots Layer_{1}(T_{n}))$，又叫因果性，则有重用可能
+	- 存储和计算开销：（1）storage per cache，$2d$；（2）flops per gen-tokens，$(dH*d+nd+nd)H$。其中 $d$ 表示q k v向量维度，$H$ 表示头数，$n$ 表示token数
+- 自注意力和新符号生成
+	- 自注意力：注意/理解已有的上下文信息，为新符号生成提供语义基础（符合上下文逻辑）
+	- 新符号生成：将最终的隐藏状态映射到词汇表，决定生成哪个符号
+- MOE代替FFN
+	- 更快的预训练、推理速度；但需要高额显存，且会过拟合。（算力低，显存多场景）
+	- 原理：（1）将大的FFN拆解为许多小的FFN（专家，不同的专家参数/职责/激活函数不同）；（2）通过路由为token分配1-2个专家（由隐藏状态计算专家权重，取top-k）
+	- 存储：高 | 需要将全部专家都加载到显存
+	- 计算：低 | 每个token只激活k个专家进行计算，训练和推理都是
+	- MOE并行：数据并行、模型并行、模型数据并行、专家数据并行、专家模型数据并行（图中一个方框代表一份模型/数据，不同颜色代表不同模型/数据）![[ Pasted image 20250327004107.png | 250]]
+- LLM服务及其 prefilling / decoding 阶段
+	- [用户] 输入提示promt {$x_{1}, \dots , x_{n}$}，[LLM] 生成输出序列{$x_{n+1},\dots,x_{n+T}$}
+	- prefilling：一次性，并行，计算所有promt的kv cache，准备首字生成
+	- decoding：自回归，串行，输出所有token
+- LLM服务的批处理
+	- 一个token是点，一个请求/sequence是线，多个线一起操作叫batch
+	- 请求间共享权重，一次处理多份请求，能够均摊I/O成本
+	- 方法1：请求粒度的batch
+		- 痛点：（1）到达时间不同，排队延迟；（2）请求的长度不同，填充带来资源浪费。
+	- 方法2：细粒度的步骤batch
+		- 细节：（1）将不同请求的输入token拼接为输入张量T；（2）当前输入张量T共享Q/K/V计算和MLP计算；（3）但自注意层各自独立计算
+- LLM的解码算法和KV cache共享
+	- 解码算法：decoder最后生成概率分布，如何从概率分布选择token输出就是解码算法
+	- 常见：（1）贪心束搜索，定向最优解，速度快；（2）随机采样（温度控制），增加创造性。
+	- kv cache共享：（1）随机采样，仅有提示词部分kv cache相同，后续的生成部分几乎不同；（2）束搜索，提示词部分kv cache相同，后续的生成部分也有诸多重叠，到后期才下降。
+- 激活函数与激活稀疏化
+	- ![[Pasted image 20250421112344.png | 500]]
+	- ReLU，具有稀疏性，计算快，旧的模型采用
+	- SwiGLU，不具备稀疏性，表达能力强，新的模型采用
+	- 参考链接，等待深入补充：
+		- https://yuanbao.tencent.com/chat/naQivTmsDa/c6dbb383-4744-4fa1-b6ce-5100ede5485d
+		- https://zhuanlan.zhihu.com/p/650237644
+		- https://www.zhihu.com/question/15527003900/answer/129423629478
+		- https://zhuanlan.zhihu.com/p/691227850
+- 浮点数据格式
+	- 符号位，指数位，尾数位，范围
+	- FP16：1，5，10，$\pm10^{38}$
+	- FP32：1，8，23，$\pm10^5$
+	- BF16：1，8，7，$\pm10^{38}$
+	- TF32：1，8，10，$\pm10^{38}$
+	- FP8：1，5，2或1，4，3，$\pm10^{15}$或$\pm10^{5}$
+	- V100 及旧卡​​：仅支持 FP16/FP32
+	- A100/H100​​：优先用 BF16/TF32/FP8
+- Paper Note
+	- awesome paper仓库
+		- https://github.com/xlite-dev/Awesome-LLM-Inference
+		- https://github.com/AmadeusChan/Awesome-LLM-System-Papers
+		- https://galeselee.gitbook.io/awesome-papers
+	- 显存优化
+		- vLLM：[[Efficient Memory Management for Large Language Model Serving with PagedAttention]]
+		- vAttenion: [[vAttention- Dynamic Memory Management for Serving LLMs without PagedAttention]]
+		- ChunkAttention: [[ChunkAttention- Efficient Self-Attention with Prefix-Aware KV Cache and Two-Phase Partition]]
+	- 异构存储
+		- ==ZERO-Inference：TODO==
+		- ==DejaVu：TODO==
+		- Powerinfer：[[PowerInfer- Fast Large Language Model Serving with a Consumer-grade GPU]]
+		- ==FlexGen：TODO==
+		- InfinitGen：[[InfiniGen- Efficient Generative Inference of Large Language Models with Dynamic KV Cache Management]]
+		- Hermes：[[Make LLM Inference Affordable to Everyone- Augmenting GPU Memory with NDP-DIMM]]
+		- LLM in a Flash：[[LLM in a flash- Efficient Large Language Model Inference with Limited Memory]]
+		- TEAL：[[Training-Free Activation Sparsity in Large Language Models]]
+		- ActiveFlow：[[Scaling Up On-Device LLMs via Active-Weight Swapping Between DRAM and Flash]]
+		- LoRA：[[LoRA- Low-Rank Adaptation of Large Language Models]]
+		- ==Impress：TODO==
+		- ==Powerinfer-2：TODO==
+	- P/D分离
+		- DistServe：[[DistServe- Disaggregating Prefill and Decoding for Goodput-optimized Large Language Model Serving]]
+		- ==Mooncake: TODO==

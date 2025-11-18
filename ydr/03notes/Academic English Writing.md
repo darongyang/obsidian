@@ -1,0 +1,26 @@
+- research
+	- creating > updating > use in new domains
+- academic paper
+	- contains original research results or reviews existing results
+	- undergoes a process of peer review
+- academic misconduct
+	- plagiarism
+		- make reference
+			- limited to neccessity of argumentation
+			- cite sequence—journal > conferernce > arxiv
+		- improper reference
+			- missing related references
+			- fake reference
+		- recognize plagiarism
+			- word-for-word: 7 or more words, quotation, in-text citation, refernce
+			- paraphrasing: in-text citation, refernce
+	- tampering the data
+	- improper authorship: exclude/include, authorized, ranking, fake info
+	- duplicate submission
+- paper content
+	- the improvement of method in some way (exception)
+	- just one good idea in the paper
+- paper novelty 
+	- find a new problem is tricky: challenging, potential, novel and useful
+	- present a new approach: solve an problem or some steps in problem
+	- combination novelty

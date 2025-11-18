@@ -1,0 +1,133 @@
+
+---
+## SOTA Paper
+
+- ==AutoGPT== **Auto-GPT for Online Decision Making: Benchmarks and Additional Opinions**
+	- ARXIV 2023.07
+	- https://arxiv.org/abs/2306.02224
+- ==MetaGPT== **MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework**
+	- ICLR 2024 oral
+	- https://arxiv.org/abs/2308.00352
+- ==AgentVerse== **AgentVerse: Facilitating Multi-Agent Collaboration and Exploring Emergent Behaviors**
+	- ICLR 2024 poster
+	- https://arxiv.org/abs/2308.10848
+- ==AgentPrune== **Cut the Crap: An Economical Communication Pipeline for LLM-based Multi-Agent Systems**
+	- ICLR 2025 poster
+	- https://arxiv.org/abs/2410.02506
+- ==AutoGen== **AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversations**
+	- COLM 2024
+	- https://arxiv.org/abs/2308.08155
+- ==DyLAN== **A Dynamic LLM-Powered Agent Network for Task-Oriented Agent Collaboration**
+	- COLM 2024
+	- https://arxiv.org/abs/2310.02170
+- ==GPTSwarm== **GPTSwarm: Language Agents as Optimizable Graphs**
+	- ICML 2024 oral
+	- https://arxiv.org/abs/2402.16823
+- ==TalkHier== **Talk Structurally, Act Hierarchically: A Collaborative Framework for LLM Multi-Agent Systems**
+	- ARXIV 2025.02
+	- https://arxiv.org/abs/2502.11098
+- ==CAMEL== **CAMEL: Communicative Agents for "Mind" Exploration of Large Language Model Society**
+	- NIPS 2023
+	- https://arxiv.org/abs/2303.17760
+- ==CommFormer== **Communication Learning in Multi-Agent Systems from Graph Modeling Perspective**
+	- ICLR 2024 Poster
+	- https://arxiv.org/abs/2411.00382v1
+- ==MAST== **Multi-Agent Synchronization Tasks**
+	- ARXIV 2024.07
+	- https://arxiv.org/abs/2404.18798
+- ==PyMARLzoo+== **An Extended Benchmarking of Multi-Agent Reinforcement Learning Algorithms in Complex Fully Cooperative Tasks**
+	- ARXIV 2025.02
+	- https://arxiv.org/abs/2502.04773v1
+- ==FinCon== **FinCon: A Synthesized LLM Multi-Agent System with Conceptual Verbal Reinforcement for Enhanced Financial Decision Making**
+	- NIPS 2024
+	- https://arxiv.org/abs/2407.06567v3
+- ==SPECTra== **SPECTra: Scalable Multi-Agent Reinforcement Learning with Permutation-Free Networks**
+	- ARXIV 2025.02
+	- https://arxiv.org/abs/2503.11726v1
+- ==CuSP== **It Takes Four to Tango: Multiagent Selfplay for Automatic Curriculum Generation**
+	- ICLR 2022
+	- https://arxiv.org/abs/2202.10608
+-  ==MAT== **Multi-Agent Reinforcement Learning is a Sequence Modeling Problem**
+	- NIPS 2022
+	- https://arxiv.org/abs/2205.14953
+- ==MADiff== **MADiff: Offline Multi-agent Learning with Diffusion Models**
+	- NIPS 2024 Poster
+	- https://arxiv.org/abs/2305.17330
+- ==IMP-MARL== **IMP-MARL: a Suite of Environments for Large-scale Infrastructure Management Planning via MARL**
+	- NIPS 2024
+	- https://arxiv.org/abs/2306.11551
+- ==ProAgent== **ProAgent: Building Proactive Cooperative Agents with Large Language Models**
+	- AAAI 2024
+	- https://arxiv.org/abs/2308.11339
+- ==GAMD== **Grounded Answers for Multi-agent Decision-making Problem through Generative World Model**
+	- NIPS 2024 Poster
+	- https://arxiv.org/abs/2410.02664
+- ==ACORM== **Attention-Guided Contrastive Role Representations for Multi-agent Reinforcement Learning**
+	- ICLR 2024 Poster
+	- https://arxiv.org/abs/2312.04819
+- ==EGNN== **Boosting Sample Efficiency and Generalization in Multi-agent Reinforcement Learning via Equivariance**
+	- NIPS 2024 Poster 
+	- https://arxiv.org/abs/2410.02581
+- **A Black-box Approach for Non-stationary Multi-agent Reinforcement Learning**
+	- ICLR 2024 Poster
+	- https://arxiv.org/abs/2306.07465
+- ==HASAC== **Maximum entropy heterogeneous-agent reinforcement learning**
+	- ICLR 2024 Spotlight
+	- https://arxiv.org/abs/2306.10715
+- **Multi-Agent Meta-Reinforcement Learning: Sharper Convergence Rates with Task Similarity**
+	- NIPS 2023 Poster
+	- https://proceedings.neurips.cc/paper_files/paper/2023/file/d1b1a091088904cbc7f7faa2b45c8f36-Paper-Conference.pdf
+- ==LOQA== **LOQA: Learning with opponent Q-Learning awareness**
+	- ICLR 2024 Poster
+	- https://arxiv.org/abs/2405.01035
+
+---
+## 综述
+
+- ==MARL科普== **MARL多智能体强化学习分享**
+	- 知乎 2020
+	- https://www.zhihu.com/column/c_1061939147282915328
+	- https://zhuanlan.zhihu.com/p/581711274
+	- http://aas.net.cn/cn/article/doi/10.16383/j.aas.c240478?viewType=abs
+- ==MARL Review== **Multi-agent Reinforcement Learning: A Comprehensive Survey**
+	- ARXIV 2023.12
+	- https://arxiv.org/pdf/2312.10256
+
+---
+
+## Note
+- **马尔可夫性：** 在时序决策过程中，​​当前状态包含所有历史信息​​，未来状态仅依赖于当前状态，与过去状态无关
+- 单智能体 — 马尔科夫决策
+	- 建模：五元组 <S, A, P, R, y> 环境 动作 转移 奖励 折扣
+	- 目标：找到​策略​ π(a∣s)（在状态 s 选择动作 a 的概率分布），以最大化​累积折扣奖励
+	- 函数：状态值函数（从状态 s 开始遵循策略 π 的期望累积奖励） 和 动作值函数（在状态 s 执行动作 a 后遵循 π 的期望累积奖励）、两个值函数遵循贝尔曼方程
+	- 求解方法：
+		- 动态规划（已知环境模型）​
+		- 强化学习（未知环境模型）​
+			- ​基于值​：直接学习​动作值函数，通过优化 Q 函数间接得到最优策略
+			- ​基于策略​：直接参数化策略 πθ​(a∣s)，通过梯度上升优化 θ 以最大化累积奖励
+			- ​Actor-Critic​：结合​策略网络（Actor）​​ 和​​值函数网络（Critic）​，用Critic的评估指导Actor的更新。Actor生成动作 πθ​(a∣s)；Critic评估动作价值 Qw​(s,a) 或状态价值 Vw​(s)
+- 多智能体 — 马尔可夫博弈/随机博弈
+	- 建模：五元组 <N, S, Ai-s, P, Pi-s> 数量 状态 动作 转移 奖励
+	- 目标：每个智能体i学习策略πi(ai∣s)，最大化自身累积奖励
+	- 类型：
+		- 合作型 MARL​：最大化团队累积奖励
+			- 值分解：VDN，QMIX
+			- 通信增强：TarMAC、IC3Net
+		- 对抗型 MARL​：求解纳什均衡（如零和博弈）
+			- ​Minimax-Q​、Fictitious Play
+		- 混合型 MARL​：平衡合作与竞争
+			- LOLA​​、SOS
+		- ==拓展算法==
+			- 元学习 - Meta-MAPG - 快速适应新任务/新队友
+			- 图神经网络 - DGN​ - 处理智能体拓扑关系（如通信图）
+
+- 动态DAG图或分层强化学习对复杂行业任务进行全局规划与局部任务分解，并标注依赖与优先级。
+- 局部任务规划上，利用多级Transformer或图注意力网络融合“总体目标-个体角色-跨智能体交互”三层情境信息，确保任务对齐。
+- 本课题将构建统一的智能体能力表征体系（涵盖推理速度、准确率、资源消耗等）及知识图谱，实现对异构智能体的精准匹配与静态调度，提升行业数据智能体系统整体效能。
+- 为处理级联幻觉，项目将通过标准化程序技术（SOP）强制智能体按步骤执行任务，并对难标准化阶段，通过主题监测和相似度检测校正意图偏移。
+
+- 本课题将融合MCP与A2A协议，设计统一的行业级通信接口。
+- 开发时空消息图剪枝算法，结合注意力机制、语义相似度和对抗检测过滤冗余及恶意消息，显著降低通信成本。
+- 其次，构建动态组网机制和弹性云边协同框架，通过智能体池匹配、贡献度评估和实时路由实现去中心化协调与动态选择，并设计弹性任务流机制，动态选择最优智能体组合，引入提前终止机制保证系统稳定性（如智能物流中根据实时路况动态调整配送智能体的组网）。
+- 针对行业知识协同管理挑战，课题将探索基于课题四语义检索研究构建共享检索增强生成（RAG）机制的分层知识存储与动态更新框架，确保智能体的行业知识高效共享与一致性。

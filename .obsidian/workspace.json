@@ -1,0 +1,314 @@
+{
+  "main": {
+    "id": "57d6493a4344f5f8",
+    "type": "split",
+    "children": [
+      {
+        "id": "78b6fb5bf55bebad",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d8c9d7347b68021b",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ydr/2025工作总结-ydr.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "2025工作总结-ydr"
+            }
+          },
+          {
+            "id": "1e58d7f43dbba60a",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ydr/01work/秋招计划.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "秋招计划"
+            }
+          },
+          {
+            "id": "11e7cf7e96d6a81b",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ydr/08daily/2025-10-22.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "2025-10-22"
+            }
+          },
+          {
+            "id": "ec0187558933de48",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "ydr/03notes/Hot-100笔记.md",
+                "mode": "source",
+                "source": false
+              },
+              "pinned": true,
+              "icon": "lucide-file",
+              "title": "Hot-100笔记"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b702f3b1daeaf16f",
+    "type": "split",
+    "children": [
+      {
+        "id": "aa8cbefc64138265",
+        "type": "tabs",
+        "dimension": 20.470829068577277,
+        "children": [
+          {
+            "id": "29309fb48b839529",
+            "type": "leaf",
+            "state": {
+              "type": "progress-tracker",
+              "state": {},
+              "icon": "bar-chart-horizontal",
+              "title": "Task progress bar"
+            }
+          },
+          {
+            "id": "dc4cba1cb78a539f",
+            "type": "leaf",
+            "state": {
+              "type": "progress-tracker",
+              "state": {},
+              "icon": "bar-chart-horizontal",
+              "title": "Task progress bar"
+            }
+          }
+        ]
+      },
+      {
+        "id": "e4779fa402a56d10",
+        "type": "tabs",
+        "dimension": 79.52917093142273,
+        "children": [
+          {
+            "id": "b5bf02a6d5a22565",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "3631bcd0f698ac78",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#todo",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "d31ea15f8f072009",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 203.50694274902344
+  },
+  "right": {
+    "id": "bda1ab4e92e6e9b2",
+    "type": "split",
+    "children": [
+      {
+        "id": "9969552494ee7ccd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f8ab4cb34130bdae",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "ydr/03notes/Hot-100笔记.md",
+                "followCursor": false,
+                "showSearch": true,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Hot-100笔记 的大纲"
+            }
+          },
+          {
+            "id": "582d5627859e60cc",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {},
+              "icon": "checkmark",
+              "title": "Todo List"
+            }
+          },
+          {
+            "id": "449564db03087676",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "c6339a4f321c9525",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "ydr/08daily/2025-07-24.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "2025-07-24 的反向链接列表"
+            }
+          },
+          {
+            "id": "88adf140cbc7075e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "ydr/08daily/2025-08-13.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "2025-08-13 的出链列表"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 254.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:创建新数据库": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": true,
+      "canvas:新建白板": true,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "remotely-save:Remotely Save": false,
+      "terminal:Open terminal": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false,
+      "thecap-cv-generator:Preview curriculum": false,
+      "progress-tracker:Progress Tracker": false
+    }
+  },
+  "active": "ec0187558933de48",
+  "lastOpenFiles": [
+    "ydr/images/Pasted image 20251113111434.png",
+    "Excalidraw/Drawing 2025-11-13 11.08.39.excalidraw.md",
+    "ydr/03notes/Hot-100笔记.md",
+    "Excalidraw",
+    "未命名.md",
+    "ffe/daily/2025-11-12.md",
+    "ffe/daily/2025-11-11.md",
+    "ffe/未命名/DddddddDL.md",
+    "ffe/daily/未命名/2025-05-23.md",
+    "ffe/daily/未命名/2025-07-01.md",
+    "ffe/daily/未命名/2025-05-22.md",
+    "ffe/daily/未命名/2025-05-07.md",
+    "ffe/daily/未命名/2025-05-13.md",
+    "ffe/daily/未命名",
+    "ffe/daily/2025-11-10.md",
+    "ffe/daily/2025-11-09.md",
+    "ffe/daily/2025-11-08.md",
+    "ffe/daily/2025-11-07 1 1.md",
+    "ffe/未命名/DDL.md",
+    "ffe/daily/2025-11-07 1.md",
+    "ffe/daily/2025-11-07.md",
+    "ffe/未命名/未命名.md",
+    "tets.md",
+    "ydr/00cv/CV-cn.md",
+    "ydr/08daily/2025-11-02.md",
+    "ydr/images/Pasted image 20251029155431.png",
+    "ydr/08daily/2025-10-25.md",
+    "ydr/08daily/2025-10-22.md",
+    "ydr/images/Pasted image 20251024105747.png",
+    "ydr/01work/秋招计划.md",
+    "未命名",
+    "ydr/images/Pasted image 20250929131542.png",
+    "ydr/images/Pasted image 20250929131520.png",
+    "ydr/images/Pasted image 20250929131440.png",
+    "ydr/images/Pasted image 20250929131408.png",
+    "ydr/images/Pasted image 20250929131346.png",
+    "ydr/images/Pasted image 20250929130027.png",
+    "ydr/images/Pasted image 20250929125910.png",
+    "ydr/images/Pasted image 20250929125825.png",
+    "未命名.base",
+    "rs-test-folder-7NXIl9Cai3KrDdTjHqcDL",
+    "未命名 1.base",
+    "ydr/00cv/reference/MyEnglishCV-v3.pdf",
+    "ydr/00cv/materials/CCEC2025-outstanding-paper.pdf",
+    "ydr/00cv/materials/CCEC2025-dinguished-paper.pdf",
+    "ydr/00cv/materials/提取自优秀论文0707（一二等奖）104份#35(2).pdf"
+  ]
+}

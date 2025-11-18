@@ -1,0 +1,11 @@
+{
+	"id": "thecap-cv-generator",
+	"name": "Thecap cv generator",
+	"version": "1.0.6",
+	"minAppVersion": "1.0.6",
+	"description": "Generate PDF curriculum from your notes.",
+	"author": "Thecap",
+	"authorUrl": "https://github.com/xthecapx",
+	"fundingUrl": "buymeacoffee.com/xthecapx",
+	"isDesktopOnly": false
+}
